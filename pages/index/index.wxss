@@ -1,0 +1,440 @@
+page {
+  height: 100vh;
+  position: relative;
+}
+
+.container {
+  height: 100%;
+}
+
+.market {
+  display: flex;
+  height: 100%;
+}
+
+/* 左边导航条 */
+
+.nav {
+  display: flex;
+  flex-basis: 30%;
+  background-color: #f6f6f6;
+  flex-direction: column;
+  font-size: 28rpx;
+  color: #777;
+  height: 100vh;
+}
+
+.nav_common {
+  padding: 35rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 鼠标点击样式 */
+
+.tabBorer {
+  background-color: #fff;
+  color: black;
+  border-left: 2px solid #333;
+  transition: all 0.2s ease 0.2s;
+}
+
+/* 图标 */
+
+.shopping, .weChart {
+  width: 100rpx;
+  height: 100rpx;
+  box-shadow: 0 3rpx 1rpx #999;
+  background-color: #fff;
+  border-radius: 50rpx;
+  text-align: center;
+}
+
+.shopping {
+  position: absolute;
+  top: 1030rpx;
+  left: 56rpx;
+}
+
+.weChart {
+  position: absolute;
+  top: 880rpx;
+  left: 56rpx;
+}
+
+.shop {
+  width: 55rpx;
+  height: 55rpx;
+  padding-top: 30rpx;
+}
+
+.rq {
+  width: 42rpx;
+  height: 42rpx;
+  padding-top: 30rpx;
+}
+
+/* 内容*/
+
+.main_content {
+  flex: 1;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  padding: 0 40rpx;
+}
+
+.info {
+  display: flex;
+  padding: 40rpx;
+  border-bottom: 1px solid #ccc;
+  position: relative;
+}
+
+.img {
+  flex: 1;
+  height: 150rpx;
+  max-width: 230rph;
+}
+
+._img {
+  width: 100%;
+  height: 100%;
+}
+
+._info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  font-size: 26rpx;
+  margin: 35rpx 0 0 25rpx;
+}
+
+.tltle {
+  flex: 1;
+}
+
+.price {
+  padding-top: 15rpx;
+  color: red;
+}
+
+/* 购物车 */
+
+.shopping_car {
+  display: none;
+  z-index: 99;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  font-size: 28rpx;
+  width: 100%;
+  transition:all 0.4s ease;
+}
+
+
+/* 设置已购商品高度，去除滚动条 */
+
+._shop_car {
+  width: 100%;
+  max-height: 500rpx;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding-right: 35rpx;
+  -webkit-overflow-scrolling: touch;
+  transition: all 0.3s ease;
+}
+
+.shopping_car_top {
+  height: 70rpx;
+  line-height: 70rpx;
+  background-color: #f6f6f6;
+  position: relative;
+  padding-left: 30rpx;
+}
+
+.delete {
+  position: absolute;
+  right: 30rpx;
+  top: -15rpx;
+}
+
+.delete_icon {
+  width: 35rpx;
+  height: 40rpx;
+  padding-top: 30rpx;
+}
+
+.shopping_car_center {
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  padding: 0 35rpx;
+  background-color: #fff;
+  font-size: 26rpx;
+}
+
+.shopping_buy {
+  align-items: center;
+  flex: 1;
+  display: flex;
+  padding: 25rpx 0;
+  border-bottom: 1px solid #f6f6f6;
+}
+
+.shopping_title {
+  flex: 1;
+}
+
+.buy_price_num {
+  align-items: center;
+  flex: 1;
+  display: flex;
+}
+
+.shopping_price {
+  flex: 1;
+  color: red;
+  padding-left: 70rpx;
+}
+
+.shopping_num {
+  flex: 1;
+  display: flex;
+}
+
+.shopping_num_common {
+  width: 50rpx;
+  height: 50rpx;
+  text-align: center;
+  line-height: 50rpx;
+  border: 1px solid #f6f6f6;
+}
+
+.number {
+  color: red;
+  font-size: 26rpx;
+}
+
+.shopping_car_bottom {
+  z-index: 98;
+  height: 100rpx;
+  line-height: 100rpx;
+  background-color: #f6f6f6;
+  display: flex;
+}
+
+.shopping_delete_icon {
+  padding-left: 35rpx;
+  height: 50rpx;
+}
+
+.shop_icon {
+  color: black;
+  width: 45rpx;
+  height: 45rpx;
+  padding-top: 25rpx;
+}
+
+.shopping_total_price {
+  font-size: 35rpx;
+  color: red;
+}
+
+.shopping_car_submit {
+  position: fixed;
+  right: 0rpx;
+  bottom: 0rpx;
+  font-size: 28rpx;
+  height: 100rpx;
+  width: 200rpx;
+  background: #333;
+  color: #fff;
+  text-align: center;
+}
+
+/*  购物车显示隐藏 */
+
+.shopping_carts_show {
+  display: block;
+}
+
+.cover_show {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.05);
+  z-index: 98;
+}
+
+.cover {
+  display: none;
+}
+
+/* 变更提醒 */
+
+.hint, .loading {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  pointer-events: none;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  transition: all 1s ease;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 98;
+}
+
+.hint.visible, .loading.visible {
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.2s ease;
+}
+
+.loading {
+  pointer-events: auto;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.hint .hint_text {
+  text-align: center;
+  font-size: 30rpx;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 50rpx;
+  border-radius: 10rpx;
+}
+
+.hint .hint_text image {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.hint .hint_text text {
+  margin-top: 15rpx;
+  display: block;
+}
+
+/* loading */
+
+.load .loader, .load .loader:after {
+  border-radius: 50%;
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.load .loader {
+  border-top: 10rpx solid rgba(255, 255, 255, 0.2);
+  border-right: 10rpx solid rgba(255, 255, 255, 0.2);
+  border-bottom: 10rpx solid rgba(255, 255, 255, 0.2);
+  border-left: 10rpx solid #fff;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation: load 0.8s infinite linear;
+  animation: load 0.8s infinite linear;
+}
+
+@-webkit-keyframes load {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes load {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+/* 点击购买小图标样式 */
+
+.red_dot {
+  position: absolute;
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 15rpx;
+  background-color: #cc0005;
+  color: #fff;
+  text-align: center;
+  line-height: 30rpx;
+  font-size: 20rpx;
+  box-shadow: 0px 2rpx 5rpx rgba(0, 0, 0, 0.4);
+  transition: all 0.2s ease;
+  visibility: hidden;
+  transform: scale(0);
+}
+
+.content .red_dot {
+  top: 30rpx;
+  left: 30rpx;
+  z-index: 1;
+}
+
+.fixed_dot.red_dot {
+  position: absolute;
+  right: 0rpx;
+  top: 0;
+  z-index: 10;
+}
+
+.red_dot.visible {
+  visibility: visible;
+  transform: scale(1);
+}
+
+.content .food-hover .img {
+  transform: scale(0.9);
+}
+
+.content .food-hover .red_dot {
+  transform: scale(1.5);
+}
+
+/* 购物车为空 */
+
+.wrap.visible .cart_contont_box {
+  bottom: 100rpx;
+}
+
+.wrap .cart_contont_box {
+  position: fixed;
+  bottom: 100rpx;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  box-shadow: 0px -5rpx 5rpx rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+.select_commodity {
+  color: red;
+}
+
+.no-count-text {
+  padding: 50rpx;
+  text-align: center;
+}

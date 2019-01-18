@@ -1,0 +1,117 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="hide{{showView?'show':''}}" bindtap="onChangeShowState">
+    <view class='market'>
+      <!--  左边导航 -->
+      <view class='nav'>
+        <view class='nav_common  {{currentData == index ? "tabBorer" : ""}}' data-current="{{index}}" bindtap='checkCurrent' wx:for="{{categories}}" wx:key="unique">{{item.name}}</view>
+
+        <view class='weChart' bindtap='scan'>
+          <image class='rq' src="../../assets/image/wechart.png"></image>
+        </view>
+
+
+        <view class="shopping {{show_cart ? 'active' : ''}}" bindtap='toggleBtn'>
+          <image class='shop' src="../../assets/image/shop.png" mode="widthFix"></image>
+          <view wx:if="{{count.num > 0}}" class="red_dot fixed_dot {{show_cart ? '' : 'visible'}}">{{count.num}}</view>
+        </view>
+
+      </view>
+
+      <!-- 右边内容 -->
+      <scroll-view scroll-y style="height: 100vh;" class='main_content'>
+
+        <view current="{{currentData}}" class="content {{show_cart ? 'no-pointer' : ''}}" bindchange="bindchange">
+
+          <view class='info' hover-start-time="10" hover-stay-time="200" hover-class="food-hover" wx:for="{{foots}}" wx:key="key" data-product_id="{{item.id}}" bindtap="addFood">
+            <view class="red_dot {{cart_nums[item.id] ? 'visible' : ''}}">{{cart_nums[item.id] ? cart_nums[item.id] : 0}}</view>
+            <view class='img'>
+              <image class='_img' mode="widthFix" src="{{item.image}}"></image>
+            </view>
+            <view class='_info'>
+              <view class='title'>{{item.name}}</view>
+              <view class='price'>￥{{item.price}}</view>
+            </view>
+          </view>
+        </view>
+
+      </scroll-view>
+
+
+      <!-- 遮罩 -->
+      <view class="{{showView?'cover_show':'cover'}}" bindtap='closeShoppingCart'></view>
+      <!-- 购物车 -->
+      <view class="{{showView?'shopping_carts_show shopping_car ':'shopping_car'}}">
+
+
+        <!-- 商品为空时 -->
+        <view class="wrap {{show_cart ? 'visible' : ''}}">
+          <view class="cart_contont_box">
+            <view wx:if="{{count.num == 0}}">
+              <view class="no-count-text">
+                您的购物车还没有商品，请
+                <text class='select_commodity' bindtap="closeShoppingCart">选择商品</text>
+              </view>
+            </view>
+            <!-- 购物车有商品时 -->
+            <view wx:else>
+              <view class='_shop_car'>
+                <view class='shopping_car_top'>已购商品
+                  <view class='delete'>
+                    <image class='delete_icon' src="../../assets/image/trash.png" mode="widthFix" bindtap="clearCart"></image>
+                  </view>
+                </view>
+
+                <view class='shopping_car_center'>
+                  <view class='shopping_buy' wx:for="{{carts}}" wx:key="key">
+                    <view class='shopping_title'>
+                      {{item.product.name}}</view>
+                    <view class='buy_price_num'>
+                      <view class='shopping_price'>￥{{item.product.price}}</view>
+                      <view class='shopping_num'>
+                        <view class='shopping_num_common' data-cart_id="{{item.id}}" data-type="dec" bindtap="changeNum">-</view>
+                        <view class='shopping_num_common number'>{{item.num}}</view>
+                        <view class='shopping_num_common' data-cart_id="{{item.id}}" data-type="add" bindtap="changeNum">+</view>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <view class='shopping_car_bottom'>
+          <view class='shopping_delete_icon'>
+            <image class='shop_icon' src="../../assets/image/shop.png"></image>
+          </view>
+          <view class='shopping_total_price'>￥{{count.total_price}}</view>
+          <view class='shopping_car_submit' bindtap='pay'>提交订单</view>
+        </view>
+      </view>
+
+
+
+
+    </view>
+
+    <!-- 提示信息 -->
+
+    <view class="wrap_black {{show_cart ? 'visible' : ''}}" bindtap="hideCarts"></view>
+
+    <view class="hint {{hint.show ? 'visible' : ''}}">
+      <view class="hint_text">
+        <image src="../../assets/image/{{hint.success}}.png" mode="widthFix"></image>
+        <text>{{hint.message}}</text>
+      </view>
+    </view>
+
+
+    <view class="loading {{loading ? 'visible' : ''}}">
+      <view class="load">
+        <view class="loader"></view>
+      </view>
+    </view>
+
+  </view>
+</view>

@@ -1,0 +1,13 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/a/a"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#111",
+    "navigationBarTitleText": "阳光爱逛大超市",
+    "navigationBarTextStyle":"#fff"
+  }
+}
